@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: api-business
+  profiles:
+    active: dev
+  cloud:
+      config:
+        fail-fast: true
+        name: ${spring.application.name}
+        profile: ${spring.profiles.active}
+        label: ${spring.profiles.active}
+        uri: http://domain-config:8888/
+        discovery:
+          enabled: false
+          service-id: douding-config

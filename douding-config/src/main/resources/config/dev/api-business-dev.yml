@@ -1,0 +1,10 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://domain-eureka:8761/eureka/
+
+##将请求转发到对应模块进行处理
+server:
+  port: 9002
+
+

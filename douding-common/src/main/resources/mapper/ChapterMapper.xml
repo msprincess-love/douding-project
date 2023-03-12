@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.douding.server.mapper.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.douding.server.domain.Chapter">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="course_id" jdbcType="CHAR" property="courseId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+
+  </sql>
+  <sql id="Base_Column_List">
+
+  </sql>
+  <select id="selectByExample" parameterType="com.douding.server.domain.ChapterExample" resultMap="BaseResultMap">
+
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+
+  </delete>
+  <delete id="deleteByExample" parameterType="com.douding.server.domain.ChapterExample">
+
+  </delete>
+  <insert id="insert" parameterType="com.douding.server.domain.Chapter">
+
+  </insert>
+  <insert id="insertSelective" parameterType="com.douding.server.domain.Chapter">
+
+  </insert>
+  <select id="countByExample" parameterType="com.douding.server.domain.ChapterExample" resultType="java.lang.Long">
+
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+
+  </update>
+  <update id="updateByExample" parameterType="map">
+
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douding.server.domain.Chapter">
+
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.douding.server.domain.Chapter">
+
+  </update>
+</mapper>

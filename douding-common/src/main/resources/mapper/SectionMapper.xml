@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.douding.server.mapper.SectionMapper">
+  <resultMap id="BaseResultMap" type="com.douding.server.domain.Section">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="course_id" jdbcType="CHAR" property="courseId" />
+    <result column="chapter_id" jdbcType="CHAR" property="chapterId" />
+    <result column="video" jdbcType="VARCHAR" property="video" />
+    <result column="time" jdbcType="INTEGER" property="time" />
+    <result column="charge" jdbcType="CHAR" property="charge" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+
+  </sql>
+  <sql id="Base_Column_List">
+
+  </sql>
+  <select id="selectByExample" parameterType="com.douding.server.domain.SectionExample" resultMap="BaseResultMap">
+
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+
+  </delete>
+  <delete id="deleteByExample" parameterType="com.douding.server.domain.SectionExample">
+
+  </delete>
+  <insert id="insert" parameterType="com.douding.server.domain.Section">
+
+  </insert>
+  <insert id="insertSelective" parameterType="com.douding.server.domain.Section">
+
+  </insert>
+  <select id="countByExample" parameterType="com.douding.server.domain.SectionExample" resultType="java.lang.Long">
+
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+
+  </update>
+  <update id="updateByExample" parameterType="map">
+
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douding.server.domain.Section">
+
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.douding.server.domain.Section">
+
+  </update>
+</mapper>

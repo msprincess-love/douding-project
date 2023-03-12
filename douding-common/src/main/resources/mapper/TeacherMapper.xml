@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.douding.server.mapper.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.douding.server.domain.Teacher">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="motto" jdbcType="VARCHAR" property="motto" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, nickname, image, position, motto, intro
+  </sql>
+  <select id="selectByExample" parameterType="com.douding.server.domain.TeacherExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from teacher
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from teacher
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.douding.server.domain.TeacherExample">
+
+  </delete>
+  <insert id="insert" parameterType="com.douding.server.domain.Teacher">
+    insert into teacher (id, name, nickname, image, position, motto, intro)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{nickname,jdbcType=CHAR},
+            #{image,jdbcType=CHAR}, #{position,jdbcType=CHAR},#{motto,jdbcType=CHAR},#{intro,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.douding.server.domain.Teacher">
+
+  </insert>
+  <select id="countByExample" parameterType="com.douding.server.domain.TeacherExample" resultType="java.lang.Long">
+    select count(*) from teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="select" resultType="com.douding.server.domain.Teacher">
+    select * from teacher
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+
+  </update>
+  <update id="updateByExample" parameterType="map">
+
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.douding.server.domain.Teacher">
+
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.douding.server.domain.Teacher">
+    update teacher
+    set name = #{name}, nickname = #{nickname}, image = #{image},
+        position = #{position}, motto = #{motto}, intro = #{intro}
+    where id = #{id}
+  </update>
+</mapper>

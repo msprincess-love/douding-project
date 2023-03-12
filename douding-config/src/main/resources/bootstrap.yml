@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: douding-config
+  profiles:
+    active: native
+  # 配置中心
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/
+        git:
+          uri: https://gitee.com/icoke/doudingconfig
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@domain-eureka:8761/eureka/
+
+#日志
+logging:
+  config: classpath:logback.xml
+
+
+

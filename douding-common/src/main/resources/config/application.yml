@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/doudingimooc?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: Aptx4869
+
+  redis:
+    host: 43.142.53.80
+    port: 6379
+    password: msprincess
+
+  profiles:
+    active: dev
+    cloud:
+      config:
+        fail-fast: true
+        name: ${spring.application.name}
+        profile: ${spring.profiles.active}
+        label: ${spring.profiles.active}
+        uri: http://localhost:9527/
+        discovery:
+          enabled: false
+          service-id: douding-config
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+logging:
+  level:
+    com:
+      douding:
+        server:
+          mapper: trace

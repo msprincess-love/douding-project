@@ -1,0 +1,50 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://domain-eureka:8761/eureka/
+
+##将请求转发到对应模块进行处理
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: api-system
+#          uri: http://127.0.0.1:9001
+          uri: lb://api-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - name: LoginAdmin
+
+        - id: api-business
+          uri: lb://api-business
+#           uri: http://127.0.0.1:9002
+          predicates:
+            - Path=/business/**
+          filters:
+            - name: LoginAdmin
+            - StripPrefix=1
+
+        - id: api-file
+          uri: lb://api-file
+#          uri: http://127.0.0.1:9003
+          predicates:
+            - Path=/file/**
+          filters:
+            - name: LoginAdmin
+            - StripPrefix=0
+  redis:
+    host: 43.142.53.80
+    port: 6379
+    password: msprincess
+
+
